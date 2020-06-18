@@ -37,7 +37,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "citrix_license_azure_test"
+			"table": "skype_user_activity"
 		}
 	}
 }
