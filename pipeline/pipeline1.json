@@ -1,0 +1,101 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "SELECT *\nFROM citrix_license",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE [dbo].[citrix_license_azure_test]",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "dt_stored",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "dt_stored",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "nbr_installed",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "nbr_installed",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "nbr_used",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "nbr_used",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "id_user_creatd",
+									"type": "String"
+								},
+								"sink": {
+									"name": "id_user_creatd",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "dt_creatd",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "dt_creatd",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SqlServerTable1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}

@@ -1,0 +1,43 @@
+{
+	"name": "AzureSqlTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "dt_stored",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "nbr_installed",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "nbr_used",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "id_user_creatd",
+				"type": "nvarchar"
+			},
+			{
+				"name": "dt_creatd",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "citrix_license_azure_test"
+		}
+	}
+}
